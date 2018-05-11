@@ -6,12 +6,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Version;
 
+//545
 public class Categoria {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY) // Chave primaria
 	private Long id;
 	
+	@Notblank
+	@Size(max=100)
 	@Column(length=100, nullable=false)
 	private String descricao;
 	
