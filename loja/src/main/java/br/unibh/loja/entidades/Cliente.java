@@ -6,7 +6,11 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.TemporalType;
 import javax.persistence.Version;
+//import javax.validation.constraints.NotNull;
+//import javax.validation.constraints.Pattern;
+//import javax.validation.constraints.Size;
 
 /**
  * @author caio-
@@ -19,31 +23,46 @@ public class Cliente {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(length=100, nullable=false)
+	@NotBlank
+	@Size(max=100)
+	@Column(name="nome", length=100, nullable=false)
 	private String nome;
 	
-	@Column(length=15, nullable=false)
+	@NotBlank
+	@Size(max=15)
+	@Column(name="login", length=15, nullable=false)
 	private String login;
 	
-	@Column(length=100, nullable=false)
+	@NotBlank
+	@Size(max=100)
+	@Column(name="senha", length=100, nullable=false)
 	private String senha;
 	
-	@Column(length=100, nullable=false)
+	@NotBlank
+	@Size(max=100)
+	@Column(name="perfil", length=100, nullable=false)
 	private String perfil;
 	
-	@Column(length=11, nullable=false)
+	@NotBlank
+	@Size(max=11)
+	@Column(name="cpf", length=11, nullable=false)
 	private String cpf;
 	
-	@Column(length=14, nullable=false)
+	@Column(name="telefone", length=14, nullable=false)
 	private String telefone;
 	
-	@Column(length=100, nullable=false)
+	@Email
+	@Column(name="email", length=100, nullable=false)
 	private String email;
 	
+	@Past
 	@Column(name="data_nascimento", nullable=false)
+	@Temporal(TemporalType.DATE)
 	private Date dataNascimento;
 	
+	@Past
 	@Column(name="data_cadastro", nullable=false)
+	@Temporal(TemporalType.DATE)
 	private Date dataCadastro;
 	
 	@Version
