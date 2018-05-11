@@ -1,10 +1,20 @@
 package br.unibh.loja.entidades;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
+
+
+@Entity
+@Table(name="tb_categoria", uniqueConstraints = {
+	    @UniqueConstraint(columnNames = { "categoria"})
+	})
+
 
 public class Categoria {
 	
@@ -12,6 +22,8 @@ public class Categoria {
 	@GeneratedValue(strategy=GenerationType.IDENTITY) // Chave primaria
 	private Long id;
 	
+	@NotBlank
+	@Size(max=100)
 	@Column(length=100, nullable=false)
 	private String descricao;
 	

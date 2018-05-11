@@ -2,11 +2,21 @@ package br.unibh.loja.entidades;
 
 import java.math.BigDecimal;
 
+
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
+
+@Entity
+@Table(name="tb_produto", uniqueConstraints = {
+	    @UniqueConstraint(columnNames = { "produto"})
+	})
+
 
 public class Produto {
 
@@ -14,19 +24,19 @@ public class Produto {
 	@GeneratedValue(strategy=GenerationType.IDENTITY) // Sign que é chave primaria
 	private Long id;
 	
-	@Column(length=100, nullable=false)
+	@Column(name="nome", length=100, nullable=false)
 	private String nome;
 	
-	@Column(length=4000, nullable=false)
+	@Column(name="descricao", length=4000, nullable=false)
 	private String descricao;
 	
 	private Categoria categoria;
 	
 	// REVER ESSE DAQUI :V
-	@Column(length=14, nullable=false)
+	@Column(name="preco", length=14, nullable=false)
 	private BigDecimal preco;
 	
-	@Column(length=100, nullable=false)
+	@Column(name="fabricante", length=100, nullable=false)
 	private String fabricante;
 	
 	@Version

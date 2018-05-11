@@ -3,15 +3,27 @@ package br.unibh.loja.entidades;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 /**
  * @author caio-
  *
  */
+
+@Entity
+@Table(name="tb_cliente", uniqueConstraints = {
+	    @UniqueConstraint(columnNames = { "cliente"})
+	})
+
 public class Cliente {
 	
 	// Atributos
@@ -19,25 +31,36 @@ public class Cliente {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(length=100, nullable=false)
+	@NotBlank
+	@Size(max=100)
+	@Column(name="nome", length=100, nullable=false)
 	private String nome;
 	
-	@Column(length=15, nullable=false)
+	@NotBlank
+	@Size(max=15)
+	@Column(name="login", length=15, nullable=false)
 	private String login;
 	
-	@Column(length=100, nullable=false)
+	@NotBlank
+	@Size(max=100)
+	@Column(name="senha", length=100, nullable=false)
 	private String senha;
 	
-	@Column(length=100, nullable=false)
+	@NotBlank
+	@Size(max=100)
+	@Email
+	@Column(name="perfil", length=100, nullable=false)
 	private String perfil;
 	
-	@Column(length=11, nullable=false)
+	@NotBlank
+	@Size(max=11)
+	@Column(name="cpf", length=11, nullable=false)
 	private String cpf;
 	
-	@Column(length=14, nullable=false)
+	@Column(name="telefone", length=14, nullable=false)
 	private String telefone;
 	
-	@Column(length=100, nullable=false)
+	@Column(name="email", length=100, nullable=false)
 	private String email;
 	
 	@Column(name="data_nascimento", nullable=false)
