@@ -2,14 +2,35 @@ package br.unibh.loja.entidades;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Version;
+
 public class Produto {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY) // Sign que é chave primaria
 	private Long id;
+	
+	@Column(length=100, nullable=false)
 	private String nome;
+	
+	@Column(length=4000, nullable=false)
 	private String descricao;
+	
 	private Categoria categoria;
+	
+	// REVER ESSE DAQUI :V
+	@Column(length=14, nullable=false)
 	private BigDecimal preco;
+	
+	@Column(length=100, nullable=false)
 	private String fabricante;
+	
+	@Version
+	private Long version;
 	
 	
 	public Produto() {
@@ -76,6 +97,15 @@ public class Produto {
 		this.fabricante = fabricante;
 	}
 
+
+	public Long getVersion() {
+		return version;
+	}
+
+	public void setVersion(Long version) {
+		this.version = version;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -86,6 +116,7 @@ public class Produto {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		result = prime * result + ((preco == null) ? 0 : preco.hashCode());
+		result = prime * result + ((version == null) ? 0 : version.hashCode());
 		return result;
 	}
 
@@ -128,15 +159,19 @@ public class Produto {
 				return false;
 		} else if (!preco.equals(other.preco))
 			return false;
+		if (version == null) {
+			if (other.version != null)
+				return false;
+		} else if (!version.equals(other.version))
+			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
 		return "Produto [id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", categoria=" + categoria
-				+ ", preco=" + preco + ", fabricante=" + fabricante + "]";
+				+ ", preco=" + preco + ", fabricante=" + fabricante + ", version=" + version + "]";
 	}
-	
 
 	
 	

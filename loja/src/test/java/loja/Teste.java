@@ -82,7 +82,7 @@ public class Teste {
 		assertEquals(pro.getFabricante(), "ashusa");
 		
 		pro.toString();
-		
+		 //Casa
 	}
 
 

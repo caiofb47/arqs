@@ -2,6 +2,12 @@ package br.unibh.loja.entidades;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Version;
+
 /**
  * @author caio-
  *
@@ -9,16 +15,39 @@ import java.util.Date;
 public class Cliente {
 	
 	// Atributos
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
+	
+	@Column(length=100, nullable=false)
 	private String nome;
+	
+	@Column(length=15, nullable=false)
 	private String login;
+	
+	@Column(length=100, nullable=false)
 	private String senha;
+	
+	@Column(length=100, nullable=false)
 	private String perfil;
+	
+	@Column(length=11, nullable=false)
 	private String cpf;
+	
+	@Column(length=14, nullable=false)
 	private String telefone;
+	
+	@Column(length=100, nullable=false)
 	private String email;
+	
+	@Column(name="data_nascimento", nullable=false)
 	private Date dataNascimento;
+	
+	@Column(name="data_cadastro", nullable=false)
 	private Date dataCadastro;
+	
+	@Version
+	private Long version;
 	
 	public Cliente() {
 		
@@ -116,6 +145,16 @@ public class Cliente {
 	public void setDataCadastro(Date dataCadastro) {
 		this.dataCadastro = dataCadastro;
 	}
+	
+	
+
+	public Long getVersion() {
+		return version;
+	}
+
+	public void setVersion(Long version) {
+		this.version = version;
+	}
 
 	@Override
 	public int hashCode() {
@@ -131,6 +170,7 @@ public class Cliente {
 		result = prime * result + ((perfil == null) ? 0 : perfil.hashCode());
 		result = prime * result + ((senha == null) ? 0 : senha.hashCode());
 		result = prime * result + ((telefone == null) ? 0 : telefone.hashCode());
+		result = prime * result + ((version == null) ? 0 : version.hashCode());
 		return result;
 	}
 
@@ -193,6 +233,11 @@ public class Cliente {
 				return false;
 		} else if (!telefone.equals(other.telefone))
 			return false;
+		if (version == null) {
+			if (other.version != null)
+				return false;
+		} else if (!version.equals(other.version))
+			return false;
 		return true;
 	}
 
@@ -200,8 +245,10 @@ public class Cliente {
 	public String toString() {
 		return "Cliente [id=" + id + ", nome=" + nome + ", login=" + login + ", senha=" + senha + ", perfil=" + perfil
 				+ ", cpf=" + cpf + ", telefone=" + telefone + ", email=" + email + ", dataNascimento=" + dataNascimento
-				+ ", dataCadastro=" + dataCadastro + "]";
+				+ ", dataCadastro=" + dataCadastro + ", version=" + version + "]";
 	}
+
+	
 	
 	
 	
