@@ -7,6 +7,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Version;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 /**
  * @author caio-
@@ -19,18 +22,28 @@ public class Cliente {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
+	@NotBlank
+	@Size(max=100)
 	@Column(length=100, nullable=false)
 	private String nome;
 	
+	@NotBlank
+	@Size(max=15)
 	@Column(length=15, nullable=false)
 	private String login;
 	
+	@NotBlank
+	@Size(max=100)
 	@Column(length=100, nullable=false)
 	private String senha;
 	
+	@NotBlank
+	@Size(max=100)
 	@Column(length=100, nullable=false)
 	private String perfil;
 	
+	@NotBlank
+	@Size(max=11)
 	@Column(length=11, nullable=false)
 	private String cpf;
 	
