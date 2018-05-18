@@ -8,9 +8,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.TemporalType;
 import javax.persistence.Version;
-//import javax.validation.constraints.NotNull;
-//import javax.validation.constraints.Pattern;
-//import javax.validation.constraints.Size;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 /**
  * @author caio-
