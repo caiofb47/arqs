@@ -13,7 +13,7 @@ public class Categoria {
 	@GeneratedValue(strategy=GenerationType.IDENTITY) // Chave primaria
 	private Long id;
 	
-	@Notlank
+	@NotBlank
 	@Size(max=100)
 	@Column(length=100, nullable=false)
 	private String descricao;
