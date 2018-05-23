@@ -3,70 +3,87 @@ package br.unibh.loja.entidades;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.CreditCardNumber;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.br.CPF;
 
 /**
  * @author caio-
  *
  */
+@Entity
+@Table(name = "tb_cliente", uniqueConstraints = { @UniqueConstraint(columnNames = { "cliente" }) })
 public class Cliente {
-	
+
 	// Atributos
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@NotBlank
-	@Size(max=100)
-	@Column(length=100, nullable=false)
+	@Size(min = 3, max = 100)
+	@Column(length = 100, nullable = false)
+	@Pattern(regexp="[A-zÀ-ú-.' ]*", message="Caracteres inválidos")
 	private String nome;
-	
+
 	@NotBlank
-	@Size(max=15)
-	@Column(length=15, nullable=false)
+	@Size(min = 8, max = 15)
+	@Pattern(regexp = "A-z", message = "Caracteres permitidos: letras, ponto e aspas simples")
+	@Column(length = 15, nullable = false)
 	private String login;
-	
+
 	@NotBlank
-	@Size(max=100)
-	@Column(length=100, nullable=false)
+	@Size(max = 100)
+	@Column(length = 100, nullable = false)
 	private String senha;
-	
+
 	@NotBlank
-	@Size(max=100)
-	@Column(length=100, nullable=false)
+	@Size(max = 100)
+	@Column(length = 100, nullable = false)
+	@Pattern(regexp="[A-zÀ-ú-.' ]*", message="Caracteres inválidos")
 	private String perfil;
-	
+
 	@NotBlank
-	@Size(max=11)
-	@Column(length=11, nullable=false)
+	@Size(max = 11)
+	@Column(length = 11, nullable = false)
+	@CPF
 	private String cpf;
-	
-	@Column(length=14, nullable=false)
+
+	@Column(length = 14, nullable = false)
 	private String telefone;
-	
-	@Column(length=100, nullable=false)
+
+	@Email
+	@Column(length = 100, nullable = false)
 	private String email;
-	
-	@Column(name="data_nascimento", nullable=false)
+
+
+	@Column(name = "data_nascimento", nullable = false)
 	private Date dataNascimento;
-	
-	@Column(name="data_cadastro", nullable=false)
+
+	@Column(name = "data_cadastro", nullable = false)
 	private Date dataCadastro;
-	
+
 	@Version
 	private Long version;
-	
+
 	public Cliente() {
-		
+
 	}
-	
-	public Cliente(Long id, String nome, String login, String senha, String perfil, String cpf, String telefone, String email, Date dataNascimento, Date dataCadastro) {
+
+	public Cliente(Long id, String nome, String login, String senha, String perfil, String cpf, String telefone,
+			String email, Date dataNascimento, Date dataCadastro) {
 		this.id = id;
 		this.nome = nome;
 		this.login = login;
@@ -158,8 +175,6 @@ public class Cliente {
 	public void setDataCadastro(Date dataCadastro) {
 		this.dataCadastro = dataCadastro;
 	}
-	
-	
 
 	public Long getVersion() {
 		return version;
@@ -261,9 +276,4 @@ public class Cliente {
 				+ ", dataCadastro=" + dataCadastro + ", version=" + version + "]";
 	}
 
-	
-	
-	
-	
-	
 }
