@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -25,6 +26,7 @@ public class Categoria {
 	@NotBlank
 	@Size(min=5, max=100)
 	@Column(length=100, nullable=false)
+	@Pattern(regexp="[A-zÀ-ú-.' ]*", message="Caracteres inválidos")
 	private String descricao;
 	
 	@Version

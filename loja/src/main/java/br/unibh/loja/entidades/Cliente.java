@@ -8,13 +8,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
-import javax.validation.constraints.Digits;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-import org.hibernate.validator.constraints.CreditCardNumber;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.br.CPF;
@@ -68,10 +68,13 @@ public class Cliente {
 	@Column(length = 100, nullable = false)
 	private String email;
 
-
+	@Past
+	@Temporal(TemporalType.DATE)
 	@Column(name = "data_nascimento", nullable = false)
 	private Date dataNascimento;
-
+	
+	@Past
+	@Temporal(TemporalType.DATE)
 	@Column(name = "data_cadastro", nullable = false)
 	private Date dataCadastro;
 

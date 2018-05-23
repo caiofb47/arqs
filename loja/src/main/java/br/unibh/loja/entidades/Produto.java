@@ -10,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 
 @Entity
@@ -22,19 +25,26 @@ public class Produto {
 	@GeneratedValue(strategy=GenerationType.IDENTITY) // Sign que é chave primaria
 	private Long id;
 	
+	@NotBlank
 	@Column(length=100, nullable=false)
+	@Pattern(regexp="[A-zÀ-ú-.' ]*", message="Caracteres inválidos")
 	private String nome;
 	
+	@NotBlank
 	@Column(length=4000, nullable=false)
+	@Pattern(regexp="[A-zÀ-ú-.' ]*", message="Caracteres inválidos")
 	private String descricao;
 	
+	@NotBlank
 	private Categoria categoria;
 	
-	// REVER ESSE DAQUI :V
+	@NotBlank
 	@Column(length=14, nullable=false)
 	private BigDecimal preco;
 	
+	@NotBlank
 	@Column(length=100, nullable=false)
+	@Pattern(regexp="[A-zÀ-ú-.' ]*", message="Caracteres inválidos")
 	private String fabricante;
 	
 	@Version
