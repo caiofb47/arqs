@@ -27,12 +27,12 @@ public class Produto {
 	
 	@NotBlank
 	@Column(length=100, nullable=false)
-	@Pattern(regexp="[A-zÀ-ú-.' ]*", message="Caracteres inválidos")
+	@Pattern(regexp="[A-zÀ-ú-.' ]*", message="Caracteres inválidos (Nome)")
 	private String nome;
 	
 	@NotBlank
 	@Column(length=4000, nullable=false)
-	@Pattern(regexp="[A-zÀ-ú-.' ]*", message="Caracteres inválidos")
+	@Pattern(regexp="[A-zÀ-ú-.' ]*", message="Caracteres inválidos (Descrição)")
 	private String descricao;
 	
 	@NotBlank
@@ -44,7 +44,7 @@ public class Produto {
 	
 	@NotBlank
 	@Column(length=100, nullable=false)
-	@Pattern(regexp="[A-zÀ-ú-.' ]*", message="Caracteres inválidos")
+	@Pattern(regexp="[A-zÀ-ú-.' ]*", message="Caracteres inválidos (Fabricante)")
 	private String fabricante;
 	
 	@Version

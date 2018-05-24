@@ -36,12 +36,12 @@ public class Cliente {
 	@NotBlank
 	@Size(min = 3, max = 100)
 	@Column(length = 100, nullable = false)
-	@Pattern(regexp="[A-zÀ-ú-.' ]*", message="Caracteres inválidos")
+	@Pattern(regexp="[A-zÀ-ú-.' ]*", message="Caracteres inválidos (Nome)")
 	private String nome;
 
 	@NotBlank
 	@Size(min = 8, max = 15)
-	@Pattern(regexp = "A-z", message = "Caracteres permitidos: letras, ponto e aspas simples")
+	@Pattern(regexp = "A-z", message = "Caracteres permitidos: letras, ponto e aspas simples (Login)")
 	@Column(length = 15, nullable = false)
 	private String login;
 
@@ -53,7 +53,7 @@ public class Cliente {
 	@NotBlank
 	@Size(max = 100)
 	@Column(length = 100, nullable = false)
-	@Pattern(regexp="[A-zÀ-ú-.' ]*", message="Caracteres inválidos")
+	@Pattern(regexp="[A-zÀ-ú-.' ]*", message="Caracteres inválidos (Perfil)")
 	private String perfil;
 
 	@NotBlank

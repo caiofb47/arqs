@@ -15,7 +15,7 @@ import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name="tb_categoria", uniqueConstraints = {
-	    @UniqueConstraint(columnNames = { "categoria"})
+	    @UniqueConstraint(columnNames = {"categoria"})
 	})
 public class Categoria {
 	
@@ -26,7 +26,7 @@ public class Categoria {
 	@NotBlank
 	@Size(min=5, max=100)
 	@Column(length=100, nullable=false)
-	@Pattern(regexp="[A-zÀ-ú-.' ]*", message="Caracteres inválidos")
+	@Pattern(regexp="[A-zÀ-ú-.' ]*", message="Caracteres inválidos (Descrição)")
 	private String descricao;
 	
 	@Version
