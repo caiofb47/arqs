@@ -18,7 +18,6 @@ import org.junit.runners.MethodSorters;
 
 import br.unibh.loja.entidades.Categoria;
 import br.unibh.loja.entidades.Produto;
-import br.unibh.loja.entidades.Produto;
 import junit.framework.Assert;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
