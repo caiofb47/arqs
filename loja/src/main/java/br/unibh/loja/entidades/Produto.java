@@ -19,7 +19,7 @@ import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name="tb_produto", uniqueConstraints = {
-		 @UniqueConstraint(columnNames = { "produto"})
+		@UniqueConstraint(columnNames = { "produto"})
 })
 @NamedQueries({
 	@NamedQuery(name="Produto.findByName", query = "select o from Produto o where o.nome like :nome")})

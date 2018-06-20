@@ -90,8 +90,7 @@ public class Cliente {
 
 	}
 
-	public Cliente(Long id, String nome, String login, String senha, String perfil, String cpf, String telefone,
-			String email, Date dataNascimento, Date dataCadastro) {
+	public Cliente(Long id, String nome, String login, String senha, String perfil, String cpf, String telefone,String email, Date dataNascimento, Date dataCadastro) {
 		this.id = id;
 		this.nome = nome;
 		this.login = login;

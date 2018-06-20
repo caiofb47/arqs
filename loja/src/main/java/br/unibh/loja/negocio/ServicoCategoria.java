@@ -12,11 +12,9 @@ import br.unibh.loja.entidades.Categoria;
 
 @Stateless
 @LocalBean
-public class ServicoCategoria implements DAO<Categoria, Long>{
-
+public class ServicoCategoria implements DAO<Categoria, Long> {
 	@Inject
 	EntityManager em;
-	
 	@Inject
 	private Logger log;
 
@@ -53,6 +51,4 @@ public class ServicoCategoria implements DAO<Categoria, Long>{
 		log.info("Encontrando o " + name);
 		return em.createNamedQuery("Categoria.findByName").setParameter("nome", "%" + name + "%").getResultList();
 	}
-	
-
 }

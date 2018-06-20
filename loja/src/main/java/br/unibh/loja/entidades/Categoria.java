@@ -16,31 +16,29 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
-@Table(name="tb_categoria", uniqueConstraints = {
-	    @UniqueConstraint(columnNames = {"categoria"})
-	})
+@Table(name = "tb_categoria", uniqueConstraints = { @UniqueConstraint(columnNames = { "categoria" }) })
 @NamedQueries({
-	@NamedQuery(name="Categoria.findByName", query = "select o from Categoria o where o.nome like :nome")})
+		@NamedQuery(name = "Categoria.findByName", query = "select o from Categoria o where o.nome like :nome") })
 
 public class Categoria {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY) // Chave primaria
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // Chave primaria
 	private Long id;
-	
+
 	@NotBlank
-	@Size(min=5, max=100)
-	@Column(length=100, nullable=false)
-	@Pattern(regexp="[A-zÀ-ú-.' ]*", message="Caracteres inválidos (Descrição)")
+	@Size(min = 5, max = 100)
+	@Column(length = 100, nullable = false)
+	@Pattern(regexp = "[A-zÀ-ú-.' ]*", message = "Caracteres inválidos (Descrição)")
 	private String descricao;
-	
+
 	@Version
 	private Long version;
-	
+
 	public Categoria() {
-		
+
 	}
-	
+
 	public Categoria(Long id, String descricao) {
 		this.id = id;
 		this.descricao = descricao;
@@ -61,7 +59,6 @@ public class Categoria {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	
 
 	public Long getVersion() {
 		return version;
@@ -112,7 +109,5 @@ public class Categoria {
 	public String toString() {
 		return "Categoria [id=" + id + ", descricao=" + descricao + ", version=" + version + "]";
 	}
-	
-	
 
 }
