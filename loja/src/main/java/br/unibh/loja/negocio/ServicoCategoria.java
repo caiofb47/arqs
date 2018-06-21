@@ -18,6 +18,7 @@ public class ServicoCategoria implements DAO<Categoria, Long> {
 	@Inject
 	private Logger log;
 
+
 	public Categoria insert(Categoria t) throws Exception {
 		log.info("Persistindo " + t);
 		em.persist(t);

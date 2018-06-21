@@ -1,9 +1,6 @@
 package loja;
 
-import static org.junit.Assert.assertEquals;
-
 import java.math.BigDecimal;
-import java.util.Date;
 import java.util.Set;
 
 import javax.validation.ConstraintViolation;
@@ -18,35 +15,24 @@ import org.junit.runners.MethodSorters;
 
 import br.unibh.loja.entidades.Categoria;
 import br.unibh.loja.entidades.Produto;
-import junit.framework.Assert;
+import org.junit.Assert;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class testProdutoValidador {
+public class TestProduto {
 
 	private static Validator validator;
 
 	@BeforeClass
 	public static void setUp() {
-		System.out.println("Inicializando o Validador....");
+		System.out.println("Inicializando o validador....");
 		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
 		validator = factory.getValidator();
 	}
 
 	@Test
 	public void testeValidacaoProduto1() {
-		Produto p = new Produto();
-		Categoria c = new Categoria();
-
-		// Populando categoria
-		c.setId(new Long(123));
-		c.setDescricao("OI");
-
-		// Populando Produto
-		p.setNome("abacaxi");
-		p.setDescricao("oi");
-		p.setCategoria(c);
-		p.setPreco(new BigDecimal(123));
-		p.setFabricante("ashusa");
+		Categoria a = new Categoria(1L, "Computadores");
+		Produto p = new Produto(1L, "Computador", "quenaotrava", a, new BigDecimal(10.00), "comeclipse");
 
 		System.out.println(p);
 		Set<ConstraintViolation<Produto>> constraintViolations = validator.validate(p);
@@ -58,19 +44,8 @@ public class testProdutoValidador {
 
 	@Test
 	public void testeValidacaoProduto2() {
-		Produto p = new Produto();
-		Categoria c = new Categoria();
-
-		// Populando categoria
-		c.setId(new Long(123));
-		c.setDescricao("");
-
-		// Populando Produto
-		p.setNome("abacaxi");
-		p.setDescricao("");
-		p.setCategoria(c);
-		p.setPreco(new BigDecimal(123));
-		p.setFabricante("ashusa");
+		Categoria a = new Categoria(1L, "Computadores");
+		Produto p = new Produto(1L, "Computado/*/*-r", "quenáo tráva", a, new BigDecimal(10.00), "comè clipse");
 
 		System.out.println(p);
 		Set<ConstraintViolation<Produto>> constraintViolations = validator.validate(p);
