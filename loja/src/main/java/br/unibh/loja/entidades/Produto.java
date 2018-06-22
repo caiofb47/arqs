@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -19,7 +21,7 @@ import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name="tb_produto", uniqueConstraints = {
-		@UniqueConstraint(columnNames = { "produto"})
+		@UniqueConstraint(columnNames = { "nome"})
 })
 @NamedQueries({
 	@NamedQuery(name="Produto.findByName", query = "select o from Produto o where o.nome like :nome")})
@@ -40,6 +42,8 @@ public class Produto {
 	private String descricao;
 	
 	@NotBlank
+	@ManyToOne
+	@JoinColumn(name="id_categoria")
 	private Categoria categoria;
 	
 	@NotBlank

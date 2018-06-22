@@ -36,7 +36,7 @@ public class TestCategoria {
 		for (ConstraintViolation<Categoria> i: constraintViolations) { // For each com downcast
 		System.out.println(" Erro de Validacao: "+i.getMessage());
 		}
-		Assert.assertEquals(1, constraintViolations.size() );
+		Assert.assertEquals(0, constraintViolations.size() );
 	}
 	
 	@Test

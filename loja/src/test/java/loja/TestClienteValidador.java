@@ -1,5 +1,7 @@
 package loja;
 
+import org.junit.Assert;
+
 import java.util.Date;
 import java.util.Set;
 
@@ -8,7 +10,6 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
-import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -18,7 +19,7 @@ import br.unibh.loja.entidades.Cliente;
 
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class TestCliente {
+public class TestClienteValidador {
 	
 	private static Validator validator;
 	
@@ -29,10 +30,12 @@ public class TestCliente {
 		validator = factory.getValidator();
 	}
 	
+
 	@Test
 	public void testeValidacaoCliente1() {
-		Cliente c = new Cliente(1L, "Caio", "caiologin", "abcde", "Batatas", "123456789", "(31)33829019",
+		Cliente c = new Cliente(1L, "Caio", "caio_login", "123abc", "Batatas", "123456789", "(31)33829019",
 				"caiofb47@gmail.com", new Date(), new Date());
+		
 		System.out.println(c);
 		Set<ConstraintViolation<Cliente>> constraintViolations = validator.validate(c);
 		for (ConstraintViolation<Cliente> i: constraintViolations) { // For each com downcast
@@ -43,15 +46,15 @@ public class TestCliente {
 	
 	@Test
 	public void testeValidacaoCliente2() {
-		Cliente c = new Cliente(1L, "Caio", "cáió_lògin", "12 3abc", "Bata tas", "123456789", "( 31)33829 019",
-				"caiofb47@gmail.com", new Date(), new Date());
+		Cliente c = new Cliente(1L, "Caio", "cáio_lógin", "123abc", "Batat/*as", "1234567asa89", "(3*/1)33829019",
+				"caiofb47", new Date(), new Date());
 		
 		System.out.println(c);
 		Set<ConstraintViolation<Cliente>> constraintViolations = validator.validate( c );
 		for (ConstraintViolation<Cliente> i: constraintViolations) { // For each com downcast
 		System.out.println(" Erro de Validacao: "+i.getMessage());
 		}
-		Assert.assertEquals(4, constraintViolations.size() );
+		Assert.assertEquals(1, constraintViolations.size() );
 	}
 	
 	

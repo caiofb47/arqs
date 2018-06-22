@@ -1,6 +1,5 @@
 package loja;
 
-import java.util.Date;
 import java.util.Set;
 
 import javax.validation.ConstraintViolation;
@@ -14,14 +13,14 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import br.unibh.loja.entidades.Cliente;
-
+import br.unibh.loja.entidades.Categoria;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class TestCliente {
+public class TestCategoriaValidador {
 	
 	private static Validator validator;
 	
+	// Q q ta rolando aqui? :v
 	@BeforeClass
 	public static void setUp() {
 		System.out.println("Inicializando o validador....");
@@ -30,29 +29,31 @@ public class TestCliente {
 	}
 	
 	@Test
-	public void testeValidacaoCliente1() {
-		Cliente c = new Cliente(1L, "Caio", "caiologin", "abcde", "Batatas", "123456789", "(31)33829019",
-				"caiofb47@gmail.com", new Date(), new Date());
+	public void testeValidacaoCategoria1() {
+		Categoria c = new Categoria(1L, "Comida");
+		c.setDescricao("abcdef");
+		
 		System.out.println(c);
-		Set<ConstraintViolation<Cliente>> constraintViolations = validator.validate(c);
-		for (ConstraintViolation<Cliente> i: constraintViolations) { // For each com downcast
+		Set<ConstraintViolation<Categoria>> constraintViolations = validator.validate( c );
+		for (ConstraintViolation<Categoria> i: constraintViolations) { // For each com downcast
 		System.out.println(" Erro de Validacao: "+i.getMessage());
 		}
 		Assert.assertEquals(0, constraintViolations.size() );
 	}
 	
 	@Test
-	public void testeValidacaoCliente2() {
-		Cliente c = new Cliente(1L, "Caio", "cáió_lògin", "12 3abc", "Bata tas", "123456789", "( 31)33829 019",
-				"caiofb47@gmail.com", new Date(), new Date());
+	public void testeValidacaoCategoria2() {
+		Categoria c = new Categoria(1L, "Comida");
+		c.setDescricao("");
 		
 		System.out.println(c);
-		Set<ConstraintViolation<Cliente>> constraintViolations = validator.validate( c );
-		for (ConstraintViolation<Cliente> i: constraintViolations) { // For each com downcast
+		Set<ConstraintViolation<Categoria>> constraintViolations = validator.validate( c );
+		for (ConstraintViolation<Categoria> i: constraintViolations) { // For each com downcast
 		System.out.println(" Erro de Validacao: "+i.getMessage());
 		}
-		Assert.assertEquals(4, constraintViolations.size() );
+		Assert.assertEquals(2, constraintViolations.size() );
 	}
+	
 	
 	
 

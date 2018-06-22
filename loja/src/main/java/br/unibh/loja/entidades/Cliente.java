@@ -28,7 +28,7 @@ import org.hibernate.validator.constraints.br.CPF;
  *
  */
 @Entity
-@Table(name = "tb_cliente", uniqueConstraints = { @UniqueConstraint(columnNames = { "cliente" }) })
+@Table(name = "tb_cliente", uniqueConstraints = { @UniqueConstraint(columnNames = { "nome" }) })
 @NamedQueries({
 	@NamedQuery(name="Cliente.findByName", query = "select o from Cliente o where o.nome like :nome")})
 public class Cliente {

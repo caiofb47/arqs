@@ -6,4 +6,3 @@ br\unibh\loja\negocio\ServicoCliente.class
 br\unibh\loja\negocio\ServicoProduto.class
 br\unibh\loja\negocio\DAO.class
 br\unibh\loja\negocio\ServicoCategoria.class
-br\unibh\loja\util\TesteServicoCategoria.class
