@@ -8,7 +8,7 @@
 			<property name="executionType">REMOTE</property>
 		</protocol>
 		<configuration>
-			<property name="jbossHome">C:\Users\116119050\wildfly-11.0.0.Final</property>
+			<property name="jbossHome">C:\Users\caio-\wildfly-11.0.0.Final</property>
 			<property name="serverConfig">standalone.xml</property>
 			<property name="outputToConsole">true</property>
 			<property name="javaVmArguments">-Djboss.socket.binding.port-offset=100</property>

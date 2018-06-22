@@ -48,20 +48,13 @@ public class TestProdutoValidador {
 	@Test
 	public void testeValidacaoProduto2() {
 		Categoria a = new Categoria(1L, "Computadores");
-		Produto p = new Produto(1L, "Computador", "quenaotrava", a, new BigDecimal(10.00), "comeclipse");
-
-		// Populando Produto
-		p.setNome("abacaxi");
-		p.setDescricao("");
-		p.setCategoria(a);
-		p.setPreco(new BigDecimal(123));
-		p.setFabricante("ashusa");
+		Produto p = new Produto(1L, "Computador", "quenatrava", a, new BigDecimal(10.00), "comeclipse");
 
 		System.out.println(p);
 		Set<ConstraintViolation<Produto>> constraintViolations = validator.validate(p);
 		for (ConstraintViolation<Produto> i : constraintViolations) { // For each com downcast
 			System.out.println(" Erro de Validacao: " + i.getMessage());
 		}
-		Assert.assertEquals(1, constraintViolations.size());
+		Assert.assertEquals(0, constraintViolations.size());
 	}
 }

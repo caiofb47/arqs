@@ -14,6 +14,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
@@ -39,7 +40,7 @@ public class Cliente {
 	private Long id;
 	
 	@NotBlank
-	@Size (min=5, max=100)
+	@Size (min=3, max=100)
 	@Pattern (regexp="[A-zÀ-ú .']*",
 	message="Nome tem caracteres invalidos")
 	@Column(length=100, nullable=false)
@@ -47,8 +48,7 @@ public class Cliente {
 	
 	@NotBlank
 	@Size(min=8, max=15)
-	@Pattern(regexp="[A-z0-9]*", 
-	message="contem caracteres invalidos")
+	@Pattern(regexp="[A-z0-9]*", message="Login: contem caracteres invalidos")
 	@Column(length=15, nullable=false)
 	private String login;
 	
@@ -59,8 +59,7 @@ public class Cliente {
 	
 	@NotBlank
 	@Size(max=100)
-	@Pattern(regexp="[A-zÀ-ú ]*", 
-	message="contem caracteres invalidos")
+	@Pattern(regexp="[A-zÀ-ú ]*", message="Perfil: caracteres invalidos")
 	@Column(length=100, nullable=false)
 	private String perfil;
 	
@@ -69,8 +68,7 @@ public class Cliente {
 	private String cpf;
 	
 	@NotBlank
-	@Pattern (regexp="\\(\\d{2}\\)\\d{4}-\\d{4}",
-	message="telefone invalido")
+	@Size(min=8,max=14)
 	@Column(length=14, nullable=true)
 	private String telefone;
 	

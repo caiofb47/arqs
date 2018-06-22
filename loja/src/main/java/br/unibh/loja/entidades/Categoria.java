@@ -15,7 +15,7 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
 
-@Entity
+@Entity												// Chave unica
 @Table(name = "tb_categoria", uniqueConstraints = { @UniqueConstraint(columnNames = { "descricao" }) })
 @NamedQueries({
 		@NamedQuery(name = "Categoria.findByName", query = "select o from Categoria o where o.descricao like :nome") })

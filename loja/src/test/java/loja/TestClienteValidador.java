@@ -33,7 +33,7 @@ public class TestClienteValidador {
 
 	@Test
 	public void testeValidacaoCliente1() {
-		Cliente c = new Cliente(1L, "Caio", "caio_login", "123abc", "Batatas", "123456789", "(31)33829019",
+		Cliente c = new Cliente(1L, "Caio", "caiologin", "123abc", "Batatas", "99999999999", "(31)33829019",
 				"caiofb47@gmail.com", new Date(), new Date());
 		
 		System.out.println(c);
@@ -41,7 +41,8 @@ public class TestClienteValidador {
 		for (ConstraintViolation<Cliente> i: constraintViolations) { // For each com downcast
 		System.out.println(" Erro de Validacao: "+i.getMessage());
 		}
-		Assert.assertEquals(0, constraintViolations.size() );
+		// Quantidade de  erros esperados
+		Assert.assertEquals(1, constraintViolations.size() );
 	}
 	
 	@Test
@@ -54,7 +55,7 @@ public class TestClienteValidador {
 		for (ConstraintViolation<Cliente> i: constraintViolations) { // For each com downcast
 		System.out.println(" Erro de Validacao: "+i.getMessage());
 		}
-		Assert.assertEquals(1, constraintViolations.size() );
+		Assert.assertEquals(4, constraintViolations.size() );
 	}
 	
 	

@@ -14,9 +14,10 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
-import org.hibernate.validator.constraints.NotBlank;
+
 
 
 @Entity
@@ -31,26 +32,26 @@ public class Produto {
 	@GeneratedValue(strategy=GenerationType.IDENTITY) // Sign que é chave primaria
 	private Long id;
 	
-	@NotBlank
+	@NotNull
 	@Column(length=100, nullable=false)
 	@Pattern(regexp="[A-zÀ-ú-.' ]*", message="Caracteres inválidos (Nome)")
 	private String nome;
 	
-	@NotBlank
+	@NotNull
 	@Column(length=4000, nullable=false)
 	@Pattern(regexp="[A-zÀ-ú-.' ]*", message="Caracteres inválidos (Descrição)")
 	private String descricao;
 	
-	@NotBlank
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name="id_categoria")
 	private Categoria categoria;
 	
-	@NotBlank
+	@NotNull
 	@Column(length=14, nullable=false)
 	private BigDecimal preco;
 	
-	@NotBlank
+	@NotNull
 	@Column(length=100, nullable=false)
 	@Pattern(regexp="[A-zÀ-ú-.' ]*", message="Caracteres inválidos (Fabricante)")
 	private String fabricante;

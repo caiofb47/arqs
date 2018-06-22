@@ -31,14 +31,14 @@ public class TestCliente {
 	
 	@Test
 	public void testeValidacaoCliente1() {
-		Cliente c = new Cliente(1L, "Caio", "caiologin", "abcde", "Batatas", "123456789", "(31)33829019",
+		Cliente c = new Cliente(1L, "Caio", "caiologin", "abcde", "Batatas", "22288844452", "(31)33829019",
 				"caiofb47@gmail.com", new Date(), new Date());
 		System.out.println(c);
 		Set<ConstraintViolation<Cliente>> constraintViolations = validator.validate(c);
 		for (ConstraintViolation<Cliente> i: constraintViolations) { // For each com downcast
 		System.out.println(" Erro de Validacao: "+i.getMessage());
 		}
-		Assert.assertEquals(0, constraintViolations.size() );
+		Assert.assertEquals(1, constraintViolations.size() );
 	}
 	
 	@Test
@@ -51,7 +51,7 @@ public class TestCliente {
 		for (ConstraintViolation<Cliente> i: constraintViolations) { // For each com downcast
 		System.out.println(" Erro de Validacao: "+i.getMessage());
 		}
-		Assert.assertEquals(4, constraintViolations.size() );
+		Assert.assertEquals(2, constraintViolations.size() );
 	}
 	
 	
