@@ -22,7 +22,6 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.br.CPF;
 
 /**
  * @author Caio Fábio Gomes ALves :D
@@ -63,7 +62,7 @@ public class Cliente {
 	@Column(length=100, nullable=false)
 	private String perfil;
 	
-	@CPF
+	//@CPF
 	@Column(length=11, nullable=false)
 	private String cpf;
 	

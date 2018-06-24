@@ -62,7 +62,7 @@ public class TesteServicoCategoria {
 	public void teste02_inserirComErro() throws Exception {
 		log.info("============> Iniciando o teste " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		try {
-			Categoria o = new Categoria(002L, "abacaxi*");
+			Categoria o = new Categoria(89L, "abaÍKócáxi");
 			ss.insert(o);
 		} catch (Exception e) {
 			assertTrue(checkString(e, "Caracteres permitidos: letras, espaços, ponto e aspas simples"));
@@ -74,9 +74,9 @@ public class TesteServicoCategoria {
 	public void teste03_atualizar() throws Exception {
 		log.info("============> Iniciando o teste " + Thread.currentThread().getStackTrace()[1].getMethodName());
 		Categoria o = (Categoria) ss.findByName("Frutas").get(0);
-		o.setDescricao("Vem da natureza :O");
+		o.setDescricao("Verduras");
 		ss.update(o);
-		Categoria aux = (Categoria) ss.findByName("abacaxi").get(0);
+		Categoria aux = (Categoria) ss.findByName("Verduras").get(0);
 		assertNotNull(aux);
 		log.info("============> Finalizando o teste " + Thread.currentThread().getStackTrace()[1].getMethodName());
 	}
@@ -84,10 +84,10 @@ public class TesteServicoCategoria {
 	@Test
 	public void teste04_excluir() throws Exception {
 		log.info("============> Iniciando o teste " + Thread.currentThread().getStackTrace()[1].getMethodName());
-		Categoria o = (Categoria) ss.findByName("abacaxi").get(0);
+		Categoria o = (Categoria) ss.findByName("Verduras").get(0);
 
 		ss.delete(o);
-		assertEquals(0, ss.findByName("abacaxi").size());
+		assertEquals(0, ss.findByName("Verduras").size());
 		log.info("============> Finalizando o teste " + Thread.currentThread().getStackTrace()[1].getMethodName());
 	}
 

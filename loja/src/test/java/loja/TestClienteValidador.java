@@ -42,7 +42,7 @@ public class TestClienteValidador {
 		System.out.println(" Erro de Validacao: "+i.getMessage());
 		}
 		// Quantidade de  erros esperados
-		Assert.assertEquals(1, constraintViolations.size() );
+		Assert.assertEquals(0, constraintViolations.size() );
 	}
 	
 	@Test
@@ -55,7 +55,7 @@ public class TestClienteValidador {
 		for (ConstraintViolation<Cliente> i: constraintViolations) { // For each com downcast
 		System.out.println(" Erro de Validacao: "+i.getMessage());
 		}
-		Assert.assertEquals(4, constraintViolations.size() );
+		Assert.assertEquals(3, constraintViolations.size() );
 	}
 	
 	

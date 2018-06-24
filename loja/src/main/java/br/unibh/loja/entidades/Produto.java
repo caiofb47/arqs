@@ -14,6 +14,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
@@ -48,7 +49,8 @@ public class Produto {
 	private Categoria categoria;
 	
 	@NotNull
-	@Column(length=14, nullable=false)
+	@Column(precision = 14, scale = 2, nullable=false)
+	@Min (value=0, message="o preço deve ser um valor positivo")
 	private BigDecimal preco;
 	
 	@NotNull

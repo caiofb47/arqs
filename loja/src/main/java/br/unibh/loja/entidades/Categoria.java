@@ -29,7 +29,8 @@ public class Categoria {
 	@NotBlank
 	@Size(min = 5, max = 100)
 	@Column(length = 100, nullable = false)
-	@Pattern(regexp = "[A-zÀ-ú-.' ]*", message = "Caracteres inválidos (Descrição)")
+	@Pattern (regexp="[A-zÀ-ú .'-/]*",message="descriçao tem caracteres invalidos")
+	
 	private String descricao;
 
 	@Version
