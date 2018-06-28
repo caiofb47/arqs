@@ -35,7 +35,7 @@ public class Produto {
 	
 	@NotNull
 	@Column(length=100, nullable=false)
-	@Pattern(regexp="[A-zÀ-ú-.' ]*", message="Caracteres inválidos (Nome)")
+	@Pattern(regexp="[A-zÀ-ú.´ ]*", message="Caracteres permitidos: letras, espaços, ponto e aspas simples")
 	private String nome;
 	
 	@NotNull

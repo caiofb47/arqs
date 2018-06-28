@@ -1,7 +1,10 @@
 loja\TesteServicoCategoria.class
+loja\TesteServicoProduto.class
+loja\TesteServicoCliente.class
 loja\TestCliente.class
 loja\TestCategoriaValidador.class
 loja\TestProdutoValidador.class
 loja\TestClienteValidador.class
 loja\TestCategoria.class
+loja\Teste.class
 loja\TestProduto.class

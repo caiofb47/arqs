@@ -47,7 +47,7 @@ public class TestClienteValidador {
 	
 	@Test
 	public void testeValidacaoCliente2() {
-		Cliente c = new Cliente(1L, "Caio", "cáio_lógin", "123abc", "Batat/*as", "1234567asa89", "(3*/1)33829019",
+		Cliente c = new Cliente(1L, "C@io", "cáio_lógin", "123abc", "Batat/*as", "1234567asa89", "(3*/1)33829019",
 				"caiofb47", new Date(), new Date());
 		
 		System.out.println(c);
@@ -55,7 +55,7 @@ public class TestClienteValidador {
 		for (ConstraintViolation<Cliente> i: constraintViolations) { // For each com downcast
 		System.out.println(" Erro de Validacao: "+i.getMessage());
 		}
-		Assert.assertEquals(3, constraintViolations.size() );
+		Assert.assertEquals(4, constraintViolations.size() );
 	}
 	
 	
