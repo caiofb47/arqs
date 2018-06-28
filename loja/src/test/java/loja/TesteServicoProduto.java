@@ -89,10 +89,7 @@ public class TesteServicoProduto {
 	@Test
 	public void teste03_atualizar() throws Exception {
 		log.info("============> Iniciando o teste " + Thread.currentThread().getStackTrace()[1].getMethodName());
-		Produto o = .
-				
-				
-		o.setDescricao("queexplode");
+		Produto o = (Produto) ss.findByName("queexplode").get(0);
 		ss.update(o);
 		Produto aux = (Produto) ss.findByName("queexplode").get(0);
 		assertNotNull(aux);
