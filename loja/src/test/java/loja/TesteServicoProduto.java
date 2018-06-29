@@ -68,7 +68,7 @@ public class TesteServicoProduto {
 		Categoria a = (Categoria) sc.findByName("celular").get(0);
 		Produto o = new Produto(1L, "Jsamsung", "quenaotrava", a, new BigDecimal(10.00), "comeclipse");
 		ss.insert(o);
-		Produto aux = (Produto) ss.findByName("Celular").get(0);
+		Produto aux = (Produto) ss.findByName("Jsamsung").get(0);
 		assertNotNull(aux);
 		log.info("============> Finalizando o teste " + Thread.currentThread().getStackTrace()[1].getMethodName());
 	}
@@ -89,7 +89,8 @@ public class TesteServicoProduto {
 	@Test
 	public void teste03_atualizar() throws Exception {
 		log.info("============> Iniciando o teste " + Thread.currentThread().getStackTrace()[1].getMethodName());
-		Produto o = (Produto) ss.findByName("queexplode").get(0);
+		Produto o = (Produto) ss.findByName("Jsamsung").get(0);
+		o.setNome("queexplode");
 		ss.update(o);
 		Produto aux = (Produto) ss.findByName("queexplode").get(0);
 		assertNotNull(aux);

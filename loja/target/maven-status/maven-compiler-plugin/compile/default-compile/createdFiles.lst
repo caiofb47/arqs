@@ -1,8 +1,13 @@
 br\unibh\loja\entidades\Categoria.class
-br\unibh\loja\entidades\Produto.class
-br\unibh\loja\entidades\Cliente.class
+br\unibh\loja\integracao\RestCliente.class
+br\unibh\loja\integracao\RestProduto.class
 br\unibh\loja\util\Resources.class
 br\unibh\loja\negocio\ServicoCliente.class
 br\unibh\loja\negocio\ServicoProduto.class
+br\unibh\loja\entidades\Produto.class
+br\unibh\loja\integracao\RestTest.class
+br\unibh\loja\entidades\Cliente.class
+br\unibh\loja\integracao\RestCategoria.class
+br\unibh\loja\integracao\JaxRsActivator.class
 br\unibh\loja\negocio\DAO.class
 br\unibh\loja\negocio\ServicoCategoria.class
